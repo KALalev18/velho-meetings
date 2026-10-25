@@ -1,0 +1,194 @@
+{
+  "id": "sample-nordvalve",
+  "query": "Nordvalve Oy (fictional sample)",
+  "created": "2026-10-24T09:00:00.000Z",
+  "seconds": 131,
+  "register": {
+    "businessId": "0000000-0",
+    "name": "Nordvalve Oy",
+    "registered": "1987-05-12",
+    "industry": "Manufacture of taps and valves",
+    "form": "Limited company",
+    "address": "Teollisuustie 4, 33100, Tampere",
+    "website": null,
+    "situations": [],
+    "tradeNames": [],
+    "source": "https://tietopalvelu.ytj.fi/"
+  },
+  "research": {
+    "notes": "FICTIONAL SAMPLE DATA for UI testing. Not a real company.",
+    "sources": [
+      {
+        "url": "https://example.com/jobs/sales-coordinator",
+        "title": "Sales Coordinator – Nordvalve (sample)"
+      }
+    ]
+  },
+  "dossier": {
+    "company": {
+      "name": "Nordvalve Oy (sample)",
+      "one_liner": "Industrial valve manufacturer selling to process industry and utilities across the Nordics.",
+      "industry": "Industrial manufacturing",
+      "hq": "Tampere",
+      "size": "~€60M revenue · ~280 people",
+      "website": "https://example.com"
+    },
+    "decision_maker": {
+      "role": "COO",
+      "name": "",
+      "name_source_url": "",
+      "why_them": "Owns order-to-delivery, where most of the manual work in the job ads sits."
+    },
+    "why_now": [
+      {
+        "signal": "New production line in Kangasala",
+        "detail": "Capacity up ~30%, but the order desk headcount is the same.",
+        "date": "Aug 2026",
+        "source_url": "https://example.com/news/kangasala",
+        "strength": "high"
+      },
+      {
+        "signal": "Hiring 3 coordinators at once",
+        "detail": "Three open roles with near-identical manual tasks suggests the order desk is the bottleneck.",
+        "date": "Oct 2026",
+        "source_url": "https://example.com/jobs",
+        "strength": "medium"
+      }
+    ],
+    "hidden_work": [
+      {
+        "area": "Order entry",
+        "evidence_quote": "Kirjaat asiakkaiden sähköpostitilaukset ERP-järjestelmään ja tarkistat hinnat hinnastosta.",
+        "evidence_translation": "You enter customers' email orders into the ERP and check prices against the price list.",
+        "source_label": "Job ad: Myyntikoordinaattori, Duunitori, Oct 2026",
+        "source_url": "https://example.com/jobs/sales-coordinator",
+        "today": "Coordinators retype PDF and email orders line by line into the ERP.",
+        "fix": "An inbox agent that reads incoming orders, pre-fills the ERP order and flags only the exceptions.",
+        "hours_per_week_low": 12,
+        "hours_per_week_high": 20,
+        "confidence": "high",
+        "effort": "small",
+        "weeks_to_value": 3
+      },
+      {
+        "area": "Weekly reporting",
+        "evidence_quote": "Compile weekly sales and delivery reports in Excel for management.",
+        "evidence_translation": "",
+        "source_label": "Job ad: Sales Analyst, company careers page, Sep 2026",
+        "source_url": "https://example.com/jobs/analyst",
+        "today": "Data is exported from ERP and CRM every Monday and stitched together by hand.",
+        "fix": "A live dashboard fed directly from ERP and CRM, with a Monday summary written automatically.",
+        "hours_per_week_low": 4,
+        "hours_per_week_high": 8,
+        "confidence": "high",
+        "effort": "small",
+        "weeks_to_value": 2
+      },
+      {
+        "area": "Delivery confirmations",
+        "evidence_quote": "Vastaat asiakkaiden toimitusaikatiedusteluihin puhelimitse ja sähköpostitse.",
+        "evidence_translation": "You answer customers' delivery-time enquiries by phone and email.",
+        "source_label": "Job ad: Asiakaspalvelija, Oikotie, Oct 2026",
+        "source_url": "https://example.com/jobs/cs",
+        "today": "Each enquiry means looking up the order in the ERP and replying by hand.",
+        "fix": "Automatic delivery-status replies and a customer status page from ERP data.",
+        "hours_per_week_low": 6,
+        "hours_per_week_high": 10,
+        "confidence": "medium",
+        "effort": "medium",
+        "weeks_to_value": 6
+      }
+    ],
+    "first_build": {
+      "title": "An order inbox that types itself",
+      "pitch": "Incoming email and PDF orders are read, matched to customers and price lists, and arrive in the ERP as draft orders for a quick human check.",
+      "plan": [
+        "Day 1-2: sample 200 real orders and map the ERP fields",
+        "Day 3-7: build the extraction and matching, run it in shadow mode",
+        "Day 8-10: coordinators approve drafts instead of typing",
+        "Day 11-14: measure time per order and hand over"
+      ],
+      "impact": "Target: order entry time down by 60–70% within a month.",
+      "kpis": [
+        {
+          "metric": "Minutes to enter one order",
+          "today": "~6 min (est.)",
+          "target": "under 2 min"
+        },
+        {
+          "metric": "Orders processed without retyping",
+          "today": "0 %",
+          "target": "70 %"
+        },
+        {
+          "metric": "Order errors reaching customers",
+          "today": "unknown, measured in week 1",
+          "target": "no increase"
+        }
+      ],
+      "time_back_to": "Coordinators move from retyping to following up open quotes and key accounts while Kangasala ramps up.",
+      "data_needed": "Read access to the order inbox, the price list, and the ERP order import. No changes to the ERP itself.",
+      "risks": [
+        {
+          "risk": "A wrong order reaches a customer",
+          "safeguard": "Every draft is approved by a coordinator before it is sent to the ERP. Shadow mode first, on 200 real orders."
+        },
+        {
+          "risk": "Customer data leaves our systems",
+          "safeguard": "Runs in your own cloud tenant, EU region only, under your existing GDPR processes."
+        },
+        {
+          "risk": "We become dependent on a vendor",
+          "safeguard": "You own the code and the prompts. Your IT team gets a handover in week 2."
+        }
+      ]
+    },
+    "microsite": {
+      "headline": "Your job ads describe about 30 hours a week of retyping.",
+      "subhead": "We read what Nordvalve has published about its own work. Here's what we found, and what we'd fix first.",
+      "opener": "You're hiring three coordinators while a new line adds 30% capacity. Most of what those roles describe is moving data from emails into the ERP, and that's exactly the kind of work we remove.",
+      "closing": "Worth 20 minutes before you make those three hires?"
+    },
+    "outreach": {
+      "email_subject": "Your Myyntikoordinaattori ad",
+      "email_en": "Hi,\n\nYour new coordinator ad says the role \"enters customers' email orders into the ERP and checks prices against the price list\". With three similar roles open as Kangasala ramps up, that's roughly 30 hours a week of retyping.\n\nWe build inbox agents that turn those orders into ERP drafts, so the team only checks exceptions. Usually live in two weeks.\n\nWe made a short page for Nordvalve with the numbers: {{PAGE_LINK}}\n\nWorth 20 minutes before the hires are made?\n\n– Velho",
+      "email_fi": "Hei,\n\nUudessa myyntikoordinaattorin ilmoituksessanne lukee, että tehtävään kuuluu \"kirjata asiakkaiden sähköpostitilaukset ERP-järjestelmään ja tarkistaa hinnat hinnastosta\". Kolme samankaltaista roolia auki samaan aikaan kun Kangasala käynnistyy, eli noin 30 tuntia viikossa uudelleenkirjoittamista.\n\nRakennamme tilausten käsittelyyn agentin, joka tekee sähköpostitilauksista valmiit luonnokset ERP:iin. Tiimi tarkistaa vain poikkeukset. Yleensä käytössä kahdessa viikossa.\n\nTeimme Nordvalvelle lyhyen sivun luvuista: {{PAGE_LINK}}\n\nEhdittäisiinkö jutella 20 minuuttia ennen rekrytointeja?\n\n– Velho",
+      "linkedin_note": "Saw Nordvalve is hiring three coordinators as Kangasala ramps up. The ads describe a lot of order retyping into the ERP. We made a short page on what that costs and how we'd remove it: {{PAGE_LINK}}",
+      "why_it_works": "It quotes their own ad back to them and ties it to a decision they're making right now: three hires."
+    },
+    "objections": [
+      {
+        "objection": "Our ERP vendor can do this.",
+        "answer": "Maybe, on their roadmap. We ship in two weeks on top of what you have, and it works with any ERP that accepts imports."
+      },
+      {
+        "objection": "Customers' orders are too messy.",
+        "answer": "That's why we start in shadow mode on 200 real orders and show you the hit rate before anyone relies on it."
+      },
+      {
+        "objection": "We don't have time for an IT project.",
+        "answer": "It's two weeks and about three hours of your team's time. The point is to give time back."
+      }
+    ],
+    "persona": {
+      "name_or_role": "COO",
+      "priorities": [
+        "On-time delivery as the new line ramps up",
+        "Keeping headcount flat",
+        "Not disrupting the ERP"
+      ],
+      "skepticism": [
+        "Consultants who don't know manufacturing",
+        "AI hype",
+        "Projects that need IT resources"
+      ],
+      "style": "Engineer by background, direct, short sentences, wants numbers."
+    }
+  },
+  "totals": {
+    "hoursPerWeek": 30,
+    "eurPerYear": 62100,
+    "hourlyCost": 45
+  },
+  "views": []
+}
